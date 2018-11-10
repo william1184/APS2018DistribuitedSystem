@@ -1,0 +1,74 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.escolhe-numero li {
+  color: #6f6f6f;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 5px 35px 0;
+  text-decoration: none;
+}
+
+.escolhe-numero li span{
+  background: #949393;
+  border-radius: 186px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-family: futuraBold;
+  font-size: 12px;
+  line-height: 37px;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 37px;
+}
+
+.bucket-selecionado li {
+  color: #6f6f6f;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 0 5px 35px 0;
+  text-decoration: none;
+}
+
+.bucket-selecionado li span{
+  background: #fff;
+  border-radius: 99px;
+  color: #2196F3;  
+  display: block;
+  font-family: futuraBold;
+  font-size: 10px;
+  line-height: 28px;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 28px;
+}
+
+.numero-selecionado-lotofacil, .numero-selecionado-megasena{
+background: #2196F3 !important;
+color: #fff !important;
+}
+
+.modal {
+max-height: 90% !important;
+
+}

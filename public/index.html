@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>APS2018</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="res/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="res/images/favicon.ico" type="image/x-icon">    
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+		apiKey: "AIzaSyAK2eT7IRYXQ3X5lclFU5Xf-9d4FHWncqs",
+		authDomain: "aps2018-ff0e2.firebaseapp.com",
+		databaseURL: "https://aps2018-ff0e2.firebaseio.com",
+		projectId: "aps2018-ff0e2",
+		storageBucket: "aps2018-ff0e2.appspot.com",
+		messagingSenderId: "576899657828"
+	  };
+	  firebase.initializeApp(config);	  
+	</script>
+    <!--  Scripts-->
+    <script defer src="res/js/materialize.js"></script>
+    <script defer src="res/js/init.js"></script>
+    <!-- update the version number as needed -->
+ 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="res/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<link href="res/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<link rel="stylesheet" href="res/css/jquery.sweet-modal.min.css" />
+	<script src="res/js/jquery.sweet-modal.min.js"></script>
+		
+  </head>
+  <body class="blue darken-1">
+      <div class="container">		
+			<div class="center">
+				<img class="responsive-img" src="/res/images/logo-loterias.png">
+			</div>
+			<div class="row">
+				<div class="col s12 m12 l12 xl12">
+					<h2 class="center white-text">Os resultados no seu bolso</h2>					
+				</div>
+			</div>			
+			<div class="row">
+				<div class="col s12 m6 l6 x6 offset-m3 offset-l3 offset-xl3">					
+					<h6 class="center white-text">Registre seu jogo e receba o resultado.</h6>
+				</div>
+			</div>
+			<form >				
+				<input id="usuarioJogos" type="hidden" name="jogos" value="">
+				<div class="row">
+					<div class="col s12 m12 l12 xl12">							
+						<div class="input-field col s12 m6 l8 xl8 offset-m2 offset-l2 offset-xl2 ">
+							<input id="email" class="validate" type="email" required>
+							<label for="email" class="white-text">Seu Email</label>
+						</div>
+						<div class="col s12 m6 l8 xl8 offset-m2 offset-l2 offset-xl2"> 
+							<span class="white-text"><b> Selecione o jogo: </b></span>
+						</div>
+						<div class="col s12 m12 l12 xl12">
+							<div class="input-field col s12 m6 l8 xl8 offset-m2 offset-l2 offset-xl2 ">
+								<label>	
+									
+									<input id="check-lotofacil" class="filled-in" name="group-1" type="checkbox">
+									<span fo="check-lotofacil" class="white-text">Lotofácil</span>									
+								</label>
+							</div>	
+						</div>
+						<div id="meus-jogos-lotofacil" class="col s12 m8 l8 xl8 offset-m2 offset-l2 offset-xl2 hide">
+							<br>
+							<table class="table responsive-table centered">
+								<thead>
+									<tr>
+										<th class="white-text">Item</th>
+										<th class="white-text">Concurso</th>
+										<th class="white-text">Quantidade</th>
+										<th class="white-text">Jogo</th>
+										<th>&nbsp;</th>
+									</tr>
+								</thead>
+								<tbody id="tbodyLotofacil">
+									
+								</tbody>
+							</table>
+							<div class="center">
+								<br>
+								<a data-target="modal-lotofacil" class="btn modal-trigger blue"><i class="material-icons left">add</i> Jogo</a>							
+							</div>
+						</div>						
+						<div class="col s12 m12 l12 xl12">
+							<div class="input-field col s12 m6 l8 xl8 offset-m2 offset-l2 offset-xl2 ">
+								<label>									
+									<input id="check-megasena" class="filled-in" name="group-1" type="checkbox">
+									<span for="check-megasena" class="white-text">Megasena</span>									
+								</label>
+							</div>							
+						</div>
+						<div id="meus-jogos-megasena" class="col s12 m6 l8 xl8 offset-m2 offset-l2 offset-xl2 hide">
+							<br>
+							<table class="table responsive-table centered">
+								<thead>
+									<tr>
+										<th width="10%" class="white-text">Item</th>
+										<th width="15%" class="white-text">Concurso</th>
+										<th width="10%" class="white-text">Quantidade</th>
+										<th width="45%" class="white-text">Jogo</th>
+										<th width="20%">&nbsp;</th>
+									</tr>
+								</thead>
+								<tbody id="tbodyMegasena">
+									
+								</tbody>
+							</table>
+							<div class="center">
+								<br>
+								<a href="" data-target="modal-megasena" class="btn modal-trigger blue"><i class="material-icons left">add</i> Jogo</a>							
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">					
+					<div class="input-field col s12 m6 l8 xl8 offset-m3 offset-l3 offset-xl3 ">
+						<label>
+							<input id="termos" class="filled-in" type="checkbox">
+							<span class="white-text">Li e aceito os termos de uso <a href="" class="white-text text-darken-4"><b>TERMOS DE USO</b></a></span>
+						</label>
+					</div>					
+				</div>
+				<br>
+				<div class="row">
+					<div class="center">
+						<label>
+							<a id="submit_form" class="btn waves-effect waves-light  blue" >SUBMIT <i class="material-icons right">send</i></a>																					
+						</label>
+					</div>
+				</div>
+				<div id="modal-lotofacil" class="modal modal-fixed-footer ">
+					<div class="modal-content">
+						<div class="input-field col s12 m4 l4 xl4 offset-m2 offset-l2 offset-xl2 ">
+							<input id="concurso-lotofacil" class="validate" name="concurso-lotofacil"  type="number" maxlength="4">
+							<label for="concurso-lotofacil" class="">Concurso</label>									
+						</div>
+						<div class="col s12 m3 l3 xl3 offset-m9 offset-l9 offset-xl9 ">											
+							<label class="">Quantidade de numeros</label>
+							<select id='select-lotofacil' class="browser-default" disabled>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+							</select>
+						</div>
+						<div class="col s12 m6 l8 xl8 offset-m2 offset-l2 offset-xl2 ">
+							<ul id="numeros-lotofacil" class="escolhe-numero">	</ul>										
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<a id="salvar-jogo-lotofacil"  class="btn modal-close waves-effect waves-light blue">Salvar Jogo <i class="material-icons left">check</i></a>
+					</div>						
+				</div>
+				<div id="modal-megasena" class="modal modal-fixed-footer">
+					<div class="modal-content">
+						<div class="input-field col s12 m4 l4 xl4 offset-m2 offset-l2 offset-xl2 ">
+							<input id="concurso-megasena" class="validate" name="concurso-megasena" type="number" maxlength="4">
+							<label for="concurso-megasena" class="">Concurso</label>									
+						</div>
+						<div class="col s12 m3 l3 xl3 offset-m9 offset-l9 offset-xl9 ">	
+							<label class="">Quantidade de numeros</label>								
+							<select id='select-megasena' class="browser-default" disabled>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>							
+						</div>
+						<div class="col s12 m6 l8 xl8 offset-m2 offset-l2 offset-xl2 ">
+							<ul id="numeros-megasena" class="escolhe-numero">	</ul>										
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a id="salvar-jogo-megasena" class="btn modal-close waves-effect waves-light blue  salvarJogo">Salvar Jogo <i class="material-icons left">check</i></a>
+					</div>
+				</div>	
+			</form>
+		</div>	
+		
+		<footer class="page-footer blue">
+			<div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Ajude-nos a crescer</h5>
+                <p class="grey-text text-lighten-4">Compartilhe com os amigos, conhecidos e familiares, para que continuemos este trabalho.</p>
+				<a class="btn waves-effect waves-light blue darken-2" href="https://www.vakinha.com.br/" name="action">Doações </a>																					
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links Úteis</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="http:\\www.caixa.com.br">Loterias Caixa</a></li>                  
+                </ul>
+				
+              </div>
+            </div>
+			</div>
+			<div class="footer-copyright">
+					<div class="container">
+						<span class="white-text">© 2018 Copyright APS2018</span>						
+					</div>
+			</div>
+		</footer>
+		<script src="res/js/script.js"></script>
+  </body>
+</html>
