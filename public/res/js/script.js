@@ -203,15 +203,18 @@ var submitForm = function(){
             url = "http://localhost:5001/aps2018-ff0e2/us-central1/cadastrarJogo";
         }
         var data = {'usuario' : {'email' : email, 'jogos' : {'lotofacil' : meusJogosLotofacil, 'megasena' : meusJogosMegasena}}};
-
+		startLoading();
         $.ajax({
             type : "POST",
             data : data,
             url : url,
-            success: function(data){                               
+            success: function(data){       
+				stopLoading();
+				limparCampos();
                 transacionalSucesso();
             },
             error: function (xhr, ajaxOptions, thrownError) {
+				stopLoading();
                 transacionalSucesso();
             }
          });
@@ -221,6 +224,22 @@ var submitForm = function(){
     }   
     
 }
+
+var startLoading = function(){
+	$('.preloader-background').fadeIn('slow');
+	
+	$('.preloader-wrapper')
+		.fadeIn();
+};
+
+var stopLoading = function(){
+	$('.preloader-background').delay(1700).fadeOut('slow');
+	
+	$('.preloader-wrapper')
+		.delay(1700)
+		.fadeOut();
+	
+};
 
 var valorQuantidadeNumeroLotofacil = function(){
     this.quantidadeNumerosLotofacil =  document.querySelector('#select-lotofacil').value;    
@@ -244,6 +263,25 @@ var excluirLinha = function(item, tipo){
     
     
 };
+
+var limparCampos = function(){
+	document.querySelector('#email').value = ''; 
+    document.querySelector('#termos').checked = false;
+	document.querySelector('#check-lotofacil').checked = false; 
+    document.querySelector('#check-megasena').checked = false;
+	document.querySelector('#meus-jogos-megasena').classList.add('hide');	;
+	document.querySelector('#meus-jogos-lotofacil').classList.add('hide');	;
+
+	var tbodyLotofacil = document.querySelector('#tbodyLotofacil');
+	var tbodyMegasena =  document.querySelector('#tbodyMegasena');
+	
+	if( tbodyLotofacil ){ tbodyLotofacil.remove();}
+	if( tbodyMegasena ){ tbodyMegasena.remove();}
+	
+	delete meusJogosLotofacil;
+	delete meusJogosMegasena;
+	
+}
 
 $(function() {
     inicializarNumeros('numeros-megasena', 60,"megasena", quantidadeNumerosMegasena);
