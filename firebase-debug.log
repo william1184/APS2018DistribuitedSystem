@@ -1,0 +1,84 @@
+[debug] [2018-11-11T12:37:29.335Z] ----------------------------------------------------------------------
+[debug] [2018-11-11T12:37:29.344Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Frank\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2018-11-11T12:37:29.344Z] CLI Version:   6.0.1
+[debug] [2018-11-11T12:37:29.344Z] Platform:      win32
+[debug] [2018-11-11T12:37:29.345Z] Node Version:  v8.12.0
+[debug] [2018-11-11T12:37:29.346Z] Time:          Sun Nov 11 2018 10:37:29 GMT-0200 (Horário brasileiro de verão)
+[debug] [2018-11-11T12:37:29.346Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-11T12:37:29.474Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-11T12:37:29.477Z] > authorizing via signed-in user
+[debug] [2018-11-11T12:37:29.478Z] [iam] checking project aps2018-ff0e2 for permissions ["firebase.projects.get"]
+[debug] [2018-11-11T12:37:29.487Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-11T12:37:29.489Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-11T12:37:29.952Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-11T12:37:29.979Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/aps2018-ff0e2:testIamPermissions  
+
+[debug] [2018-11-11T12:37:31.171Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-11T12:37:31.173Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/aps2018-ff0e2  
+ 
+[debug] [2018-11-11T12:37:32.159Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\Frank\Desktop\APS'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-11-11T12:37:44.640Z] Fetching environment
+[debug] [2018-11-11T12:37:44.648Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/576899657828:getServerAppConfig  
+ 
+[debug] [2018-11-11T12:37:44.650Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/576899657828/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-11T12:37:45.364Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2018-11-11T12:37:46.031Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-11T12:37:46.032Z] Starting @google-cloud/functions-emulator
+[debug] [2018-11-11T12:37:53.128Z] Parsing function triggers
+[info] +  functions: carregarSorteiosLotofacil: http://localhost:5001/aps2018-ff0e2/us-central1/carregarSorteiosLotofacil
+[info] +  functions: carregarSorteiosMegasena: http://localhost:5001/aps2018-ff0e2/us-central1/carregarSorteiosMegasena
+[info] +  functions: cadastrarJogo: http://localhost:5001/aps2018-ff0e2/us-central1/cadastrarJogo
+[info] +  functions: ultimoSorteioMegasena: http://localhost:5001/aps2018-ff0e2/us-central1/ultimoSorteioMegasena
+[info] +  functions: ultimoSorteioLotofacil: http://localhost:5001/aps2018-ff0e2/us-central1/ultimoSorteioLotofacil
+[info] +  functions: procurarUsuariosVencedores: http://localhost:5001/aps2018-ff0e2/us-central1/procurarUsuariosVencedores
+[debug] [2018-11-11T13:23:03.125Z] ----------------------------------------------------------------------
+[debug] [2018-11-11T13:23:03.127Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Frank\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2018-11-11T13:23:03.128Z] CLI Version:   6.0.1
+[debug] [2018-11-11T13:23:03.128Z] Platform:      win32
+[debug] [2018-11-11T13:23:03.128Z] Node Version:  v8.12.0
+[debug] [2018-11-11T13:23:03.128Z] Time:          Sun Nov 11 2018 11:23:03 GMT-0200 (Horário brasileiro de verão)
+[debug] [2018-11-11T13:23:03.128Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-11T13:23:03.140Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-11T13:23:03.141Z] > authorizing via signed-in user
+[debug] [2018-11-11T13:23:03.141Z] [iam] checking project aps2018-ff0e2 for permissions ["firebase.projects.get"]
+[debug] [2018-11-11T13:23:03.143Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-11T13:23:03.143Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-11T13:23:03.497Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-11T13:23:03.515Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/aps2018-ff0e2:testIamPermissions  
+
+[debug] [2018-11-11T13:23:04.676Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-11T13:23:04.679Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/aps2018-ff0e2  
+ 
+[debug] [2018-11-11T13:23:05.685Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\Frank\Desktop\APS'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-11-11T13:23:06.600Z] Fetching environment
+[debug] [2018-11-11T13:23:06.602Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/576899657828:getServerAppConfig  
+ 
+[debug] [2018-11-11T13:23:06.603Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/576899657828/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-11T13:23:07.147Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-11T13:23:07.148Z] Starting @google-cloud/functions-emulator
+[debug] [2018-11-11T13:23:08.145Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2018-11-11T13:23:09.752Z] Parsing function triggers
+[info] +  functions: ultimoSorteioLotofacil: http://localhost:5001/aps2018-ff0e2/us-central1/ultimoSorteioLotofacil
+[info] +  functions: carregarSorteiosLotofacil: http://localhost:5001/aps2018-ff0e2/us-central1/carregarSorteiosLotofacil
+[info] +  functions: cadastrarJogo: http://localhost:5001/aps2018-ff0e2/us-central1/cadastrarJogo
+[info] +  functions: ultimoSorteioMegasena: http://localhost:5001/aps2018-ff0e2/us-central1/ultimoSorteioMegasena
+[info] +  functions: carregarSorteiosMegasena: http://localhost:5001/aps2018-ff0e2/us-central1/carregarSorteiosMegasena
+[info] +  functions: procurarUsuariosVencedores: http://localhost:5001/aps2018-ff0e2/us-central1/procurarUsuariosVencedores

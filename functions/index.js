@@ -81,15 +81,12 @@ exports.carregarSorteiosLotofacil = functions.https.onRequest((res, resp) => {
 
 exports.carregarSorteiosMegasena = functions.https.onRequest((res, resp) => {
 	var sorteio = res.query.sorteio;
-	var url = 'https://www.lotodicas.com.br/api/mega-sena/'+sorteio;	
-	
-	request.get(url, (error, response, body) => {
-		console.log(body);
+	var url = 'https://www.lotodicas.com.br/api/mega-sena/'+sorteio;		
+	request.get(url, (error, response, body) => {		
 		var resultadoAPI = {};
 		if( body ){
 			resultadoAPI = JSON.parse(body);
-		}	
-		console.log(resultadoAPI);
+		}			
 		var proximo_sorteio = parseInt(resultadoAPI.numero) + 1;
 		var resultado = {'numero_concurso': resultadoAPI.numero, 'numeros_sorteados': resultadoAPI.sorteio.join(','), 'ganhadores': resultadoAPI.ganhadores, 'rateio_entre_ganhadores': resultadoAPI.rateio, 'data_sorteio_atual': resultadoAPI.data , 'proximo_sorteio':  proximo_sorteio, 'data_proximo_sorteio': resultadoAPI.proximo_data };
 		
@@ -119,11 +116,32 @@ exports.carregarSorteiosMegasena = functions.https.onRequest((res, resp) => {
 exports.cadastrarJogo = functions.https.onRequest((res, resp) => {
 	resp.set('Access-Control-Allow-Origin', "*")
 	resp.set('Access-Control-Allow-Methods', 'GET, POST')
-	let usuario = res.body['usuario'];
+	let usuario = res.body['usuario'];	
+	  
+ 	db.collection('usuarios')
+	 .doc(usuario.email)      
+	 .set(usuario)
+	 .then(ref => {
+		 console.log('Added document with ID: ', ref.id);
+		 resp.status(200).send("Success " ); 		
+		return emailCadastro(usuario); 
+	  })
+	 .catch(error => {
+		 console.log("Hello " + error);
+		 if( error ){
+			 console.log('Error writing document: ' + error);
+			 resp.status(500).send("Não foi possivel carregar o sorteio. /n erro:  "+ error );
+
+		 }
+		return false;
+	});
+});
+
+function emailCadastro(usuario){
 	var assunto = "Email de Confirmação";	
 	var corpo = "Loterias";
 	var corpoHtml = "<div>Você acaba de Cadastrar o seu jogo.</div><p>Aqui estão seus jogos: </p>";
-	
+
 	if( usuario.jogos.megasena ){
 		usuario.jogos.megasena.forEach( (jogo) => {
 			corpoHtml += "<p> Megasena -  Concurso: "+jogo.concurso + ", Numeros : "+jogo.numerosSelecionados + "</p>"		
@@ -136,25 +154,9 @@ exports.cadastrarJogo = functions.https.onRequest((res, resp) => {
 		});		
 	}
 	corpoHtml += "<p>Assim que sair um resultado lhe enviaremos um e-mail.</p>";
-	  
- 	db.collection('usuarios')
-	 .doc(usuario.email)      
-	 .set(usuario)
-	 .then(ref => {
-		resp.status(200).send("Success " ); 		
-		console.log('Added document with ID: ', ref.id);
-		return enviarEmail(corpo,corpoHtml, assunto, usuario.email);
-	  })
-	 .catch(error => {
-		 console.log("Hello " + error);
-		 if( error ){
-			 console.log('Error writing document: ' + error);
-			 resp.status(500).send("Não foi possivel carregar o sorteio. /n erro:  "+ error );
 
-		 }
-		return false;
-	});
-});
+	enviarEmail(corpo,corpoHtml, assunto, usuario.email);
+}
 
 exports.ultimoSorteioMegasena = functions.https.onRequest((res, resp) => { 	
 		var resultadosRef = db.collection('megasena');
@@ -189,18 +191,6 @@ exports.ultimoSorteioLotofacil = functions.https.onRequest((res, resp) => {
 			console.log('Error getting documents', err);
 		});	
 	
-});
-
-exports.procurarUsuariosVencedores = functions.https.onRequest((res, resp) => {
-	var tipoJogo = 'megasena';
-	var Concurso = '1212'; 
-	var jogo = '1,2,3,4,5,6';
-
-	// Create a reference to the usuarios collection
-	procurarVencedor(tipoJogo, Concurso, jogo);
-	
-	resp.status(200).send("Success " );     
- 	
 });
 
 function enviarEmail(corpo,corpoHtml, assunto, destinatario){
