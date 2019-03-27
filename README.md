@@ -18,6 +18,6 @@ var d = array1.some( function(value, index, array){
 });
 
 
-Melhorar aspectos do e-mail enviado.
+Melhorar aspecto do e-mail enviado.
 
-Melhorar aspector da mensagem enviada.
+Melhorar aspecto da mensagem enviada.
